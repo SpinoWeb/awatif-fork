@@ -21,7 +21,7 @@
     "@types/triangle-wasm": "^1.0.2",
     "awatif-ui": "^1.0.0",
     "typescript": "~5.6.3",
-    "vite": "~5.4.10"
+    "vite": "^8.0.3"
   },
   "dependencies": {
     "mathjs": "^14.3.1",

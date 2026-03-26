@@ -60,7 +60,7 @@ export type SettingsObj = {
 export function getSettings(
   settings: Settings,
   mesh?: Mesh,
-  solids?: State<object>
+  solids?: State<object>,
 ): HTMLElement {
   // init
   const container = document.createElement("div");
@@ -166,7 +166,10 @@ export function getSettings(
   });
 
   // Modal Animation folder
-  const modalFolder = pane.addFolder({ title: "Modal Animation", expanded: false });
+  const modalFolder = pane.addFolder({
+    title: "Modal Animation",
+    expanded: false,
+  });
 
   modalFolder.addBinding(settings.modalMode, "val", {
     label: "Mode",

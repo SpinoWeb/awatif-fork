@@ -31,7 +31,7 @@ export default defineConfig({
         "quad4-test": "src/quad4-test/index.html",
         "frames-shells": "src/frames-shells/index.html",
         "nave-industrial": "src/nave-industrial/index.html",
-        "zapata": "src/zapata/index.html",
+        zapata: "src/zapata/index.html",
         "vivienda-crucita": "src/vivienda-crucita/index.html",
       },
     },

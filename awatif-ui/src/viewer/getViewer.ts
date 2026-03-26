@@ -49,7 +49,7 @@ export function getViewer({
     45,
     1,
     0.1,
-    2 * 1e6 // supported view till 1e6
+    2 * 1e6, // supported view till 1e6
   );
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   const controls = new OrbitControls(camera, renderer.domElement);
@@ -59,8 +59,8 @@ export function getViewer({
     settings.displayScale.val === 0
       ? 1
       : settings.displayScale.val > 0
-      ? settings.displayScale.val
-      : -1 / settings.displayScale.val
+        ? settings.displayScale.val
+        : -1 / settings.displayScale.val,
   );
   const derivedNodes = deriveNodes(mesh, settings);
   const gridObj = grid(settings.gridSize.rawVal);
@@ -97,7 +97,7 @@ export function getViewer({
         camera.position.set(
           center.x + distance * 0.7,
           center.y - distance * 0.7,
-          distance * 0.5
+          distance * 0.5,
         );
         camera.up.set(0, 0, 1);
         break;
@@ -188,7 +188,7 @@ export function getViewer({
       loads(mesh, settings, derivedNodes, derivedDisplayScale),
       orientations(mesh, settings, derivedNodes, derivedDisplayScale),
       nodeResults(mesh, settings, derivedNodes, derivedDisplayScale),
-      frameResults(mesh, settings, derivedNodes, derivedDisplayScale)
+      frameResults(mesh, settings, derivedNodes, derivedDisplayScale),
     );
 
     // Color map
@@ -197,7 +197,7 @@ export function getViewer({
       mesh,
       settings,
       derivedNodes,
-      colorMapValues
+      colorMapValues,
     );
     const legend = getLegend(colorMapValues);
 
@@ -313,7 +313,7 @@ export function getViewer({
         });
 
         derivedNodes.val = newNodes;
-        viewerRender();  // Render the animation frame
+        viewerRender(); // Render the animation frame
       }
 
       animationFrameId = requestAnimationFrame(animateModal);
@@ -335,7 +335,9 @@ export function getViewer({
         if (mesh?.nodes?.val) {
           derivedNodes.val = settings.deformedShape.val
             ? mesh.nodes.val.map((node, index) => {
-                const d = mesh.deformOutputs?.val.deformations?.get(index)?.slice(0, 3) ?? [0, 0, 0];
+                const d = mesh.deformOutputs?.val.deformations
+                  ?.get(index)
+                  ?.slice(0, 3) ?? [0, 0, 0];
                 return node.map((n, i) => n + d[i]) as Node;
               })
             : [...mesh.nodes.val];
@@ -350,7 +352,7 @@ export function getViewer({
 // Utils
 function deriveNodes(
   mesh: Mesh | undefined,
-  settings: Settings
+  settings: Settings,
 ): State<Node[]> {
   const derivedNodes: State<Node[]> = van.state([]);
 
@@ -368,7 +370,9 @@ function deriveNodes(
     // Static deformed shape (when not animating)
     if (!settings.modalAnimate.val) {
       derivedNodes.val = mesh.nodes.val.map((node, index) => {
-        const d = mesh.deformOutputs?.val.deformations?.get(index)?.slice(0, 3) ?? [0, 0, 0];
+        const d = mesh.deformOutputs?.val.deformations
+          ?.get(index)
+          ?.slice(0, 3) ?? [0, 0, 0];
         return node.map((n, i) => n + d[i]) as Node;
       });
     }

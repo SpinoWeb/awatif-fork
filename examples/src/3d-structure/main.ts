@@ -34,7 +34,7 @@ const parameters: Parameters = {
     label: "dz (m)",
   },
   divisions: {
-    value: van.state(4),
+    value: van.state(2),
     min: 1,
     max: 10,
     step: 1,
@@ -72,7 +72,7 @@ van.derive(() => {
       [0, 0, dz * i],
       [dx, 0, dz * i],
       [dx, dy, dz * i],
-      [0, dy, dz * i]
+      [0, dy, dz * i],
     );
   }
   nodes = nodes.map((v) => [6 + v[0], 6 + v[1], v[2]]); // center structure in the grid
@@ -147,5 +147,5 @@ document.body.append(
     sourceCode:
       "https://github.com/madil4/awatif/blob/main/examples/src/3d-structure/main.ts",
     author: "https://www.linkedin.com/in/madil4/",
-  })
+  }),
 );

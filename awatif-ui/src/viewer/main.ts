@@ -20,5 +20,5 @@ const viewerElm = getViewer({
   mesh: { nodes, elements },
   settingsObj: { orientations: true },
 });
-console.log("main > viewerElm", viewerElm);
+//console.log("main > viewerElm", viewerElm);
 document.body.appendChild(viewerElm);

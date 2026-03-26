@@ -40,5 +40,8 @@
   "dependencies": {
     "vite-plugin-top-level-await": "^1.6.0",
     "web-ifc": "^0.0.75"
+  },
+  "devDependencies": {
+    "esbuild": "^0.27.4"
   }
 }

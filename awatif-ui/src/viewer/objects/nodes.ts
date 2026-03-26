@@ -6,11 +6,11 @@ import { Settings } from "../settings/getSettings";
 export function nodes(
   settings: Settings,
   derivedNodes: State<Node[]>,
-  derivedDisplayScale: State<number>
+  derivedDisplayScale: State<number>,
 ): THREE.Points<THREE.BufferGeometry, THREE.PointsMaterial> {
   const points = new THREE.Points(
     new THREE.BufferGeometry(),
-    new THREE.PointsMaterial()
+    new THREE.PointsMaterial(),
   );
   const size = 0.05 * settings.gridSize.rawVal * 0.5;
   points.frustumCulled = false;
@@ -21,7 +21,7 @@ export function nodes(
 
     points.geometry.setAttribute(
       "position",
-      new THREE.Float32BufferAttribute(derivedNodes.val.flat(), 3)
+      new THREE.Float32BufferAttribute(derivedNodes.val.flat(), 3),
     );
   });
 
